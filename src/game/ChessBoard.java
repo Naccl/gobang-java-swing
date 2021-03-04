@@ -179,10 +179,6 @@ public class ChessBoard extends JComponent implements MouseListener {
 
 	// 深搜判断是否五连珠
 	private void isWin(int x, int y, int d) {
-		if (sameColorCount >= 5) {
-			win = true;
-			return;
-		}
 		// 起始四个方向
 		if (d == 8) {
 			for (int i = 0; i < 4; i++) {
@@ -200,6 +196,9 @@ public class ChessBoard extends JComponent implements MouseListener {
 				int ny = y + dy[d];
 				if (nx >= 0 && ny >= 0 && nx <= ROWS && ny <= COLS) isWin(nx, ny, d);
 			} else return;
+		}
+		if (sameColorCount >= 5) {
+			win = true;
 		}
 		return;
 	}
